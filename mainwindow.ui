@@ -99,10 +99,6 @@
    </property>
   </action>
   <action name="actionASave">
-   <property name="icon">
-    <iconset>
-     <normaloff>build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/images/20221117105745EqGk.jpg</normaloff>build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/images/20221117105745EqGk.jpg</iconset>
-   </property>
    <property name="text">
     <string>另存(&amp;A)</string>
    </property>
@@ -156,6 +152,8 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/images/designwindow.qrc"/>
+ </resources>
  <connections/>
 </ui>
