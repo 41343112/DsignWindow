@@ -27,4 +27,3 @@ FORMS += \
 RESOURCES += \
     images/designwindow.qrc
 
-DISTFILES +=

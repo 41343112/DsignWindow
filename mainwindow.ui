@@ -13,14 +13,20 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QTextEdit" name="textEdit"/>
+    </item>
+   </layout>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>33</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -60,16 +66,30 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionNew"/>
-   <addaction name="actionClose"/>
+   <addaction name="actionOpen"/>
    <addaction name="actionSave"/>
    <addaction name="actionASave"/>
-   <addaction name="separator"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar_2">
+   <property name="windowTitle">
+    <string>toolBar_2</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
    <addaction name="actionUndo"/>
    <addaction name="actionCuT"/>
    <addaction name="actionCopy"/>
    <addaction name="actionPaste"/>
   </widget>
   <action name="actionOpen">
+   <property name="icon">
+    <iconset resource="images/designwindow.qrc">
+     <normaloff>:/images/open.png</normaloff>:/images/open.png</iconset>
+   </property>
    <property name="text">
     <string>開啟(&amp;O)</string>
    </property>
@@ -78,6 +98,10 @@
    </property>
   </action>
   <action name="actionNew">
+   <property name="icon">
+    <iconset resource="images/designwindow.qrc">
+     <normaloff>:/images/new.png</normaloff>:/images/new.png</iconset>
+   </property>
    <property name="text">
     <string>新增(&amp;N)</string>
    </property>
@@ -91,6 +115,10 @@
    </property>
   </action>
   <action name="actionSave">
+   <property name="icon">
+    <iconset resource="images/designwindow.qrc">
+     <normaloff>:/images/save.png</normaloff>:/images/save.png</iconset>
+   </property>
    <property name="text">
     <string>儲存(&amp;S)</string>
    </property>
@@ -99,6 +127,10 @@
    </property>
   </action>
   <action name="actionASave">
+   <property name="icon">
+    <iconset resource="images/designwindow.qrc">
+     <normaloff>:/images/asave.png</normaloff>:/images/asave.png</iconset>
+   </property>
    <property name="text">
     <string>另存(&amp;A)</string>
    </property>
@@ -109,6 +141,10 @@
    </property>
   </action>
   <action name="actionUndo">
+   <property name="icon">
+    <iconset resource="images/designwindow.qrc">
+     <normaloff>:/images/undo.png</normaloff>:/images/undo.png</iconset>
+   </property>
    <property name="text">
     <string>還原(&amp;U)</string>
    </property>
@@ -117,6 +153,10 @@
    </property>
   </action>
   <action name="actionCuT">
+   <property name="icon">
+    <iconset resource="images/designwindow.qrc">
+     <normaloff>:/images/cut.png</normaloff>:/images/cut.png</iconset>
+   </property>
    <property name="text">
     <string>剪下(&amp;T)</string>
    </property>
@@ -125,6 +165,10 @@
    </property>
   </action>
   <action name="actionCopy">
+   <property name="icon">
+    <iconset resource="images/designwindow.qrc">
+     <normaloff>:/images/copy.png</normaloff>:/images/copy.png</iconset>
+   </property>
    <property name="text">
     <string>複製(&amp;C)</string>
    </property>
@@ -141,6 +185,10 @@
    </property>
   </action>
   <action name="actionPaste">
+   <property name="icon">
+    <iconset resource="images/designwindow.qrc">
+     <normaloff>:/images/paste.png</normaloff>:/images/paste.png</iconset>
+   </property>
    <property name="text">
     <string>貼上(&amp;P)</string>
    </property>
@@ -153,7 +201,7 @@
   </action>
  </widget>
  <resources>
-  <include location="build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/images/designwindow.qrc"/>
+  <include location="images/designwindow.qrc"/>
  </resources>
  <connections/>
 </ui>
