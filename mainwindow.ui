@@ -51,8 +51,25 @@
     <addaction name="actionCopy"/>
     <addaction name="actionAll"/>
    </widget>
+   <widget class="QMenu" name="menu_Third">
+    <property name="title">
+     <string>第三個功能表單(&amp;T)</string>
+    </property>
+    <addaction name="actionFind"/>
+    <addaction name="actionReplace"/>
+    <addaction name="separator"/>
+    <addaction name="actionGoto"/>
+   </widget>
+   <widget class="QMenu" name="menu_View">
+    <property name="title">
+     <string>檢視(&amp;V)</string>
+    </property>
+    <addaction name="actionDarkMode"/>
+   </widget>
    <addaction name="menu"/>
    <addaction name="menu_E"/>
+   <addaction name="menu_Third"/>
+   <addaction name="menu_View"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
@@ -197,6 +214,42 @@
    </property>
    <property name="menuRole">
     <enum>QAction::MenuRole::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionFind">
+   <property name="icon">
+    <iconset resource="images/designwindow.qrc">
+     <normaloff>:/images/find.png</normaloff>:/images/find.png</iconset>
+   </property>
+   <property name="text">
+    <string>尋找(&amp;F)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
+   </property>
+  </action>
+  <action name="actionReplace">
+   <property name="text">
+    <string>取代(&amp;R)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+H</string>
+   </property>
+  </action>
+  <action name="actionGoto">
+   <property name="text">
+    <string>跳至行號(&amp;G)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+G</string>
+   </property>
+  </action>
+  <action name="actionDarkMode">
+   <property name="text">
+    <string>深色介面(&amp;D)</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
    </property>
   </action>
  </widget>
