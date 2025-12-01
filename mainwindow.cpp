@@ -4,7 +4,6 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
     setupUi(this);
-    connect(actionDarkMode, &QAction::toggled, this, &MainWindow::on_actionDarkMode_toggled);
 }
 
 MainWindow::~MainWindow() {}
