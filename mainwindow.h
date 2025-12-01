@@ -11,5 +11,8 @@ class MainWindow : public QMainWindow,
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+private slots:
+    void on_actionDarkMode_toggled(bool checked);
 };
 #endif // MAINWINDOW_H
