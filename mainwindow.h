@@ -14,5 +14,10 @@ public:
 
 private slots:
     void on_actionDarkMode_toggled(bool checked);
+    void on_actionSave_triggered();
+    void on_actionASave_triggered();
+
+private:
+    QString currentFilePath;
 };
 #endif // MAINWINDOW_H
