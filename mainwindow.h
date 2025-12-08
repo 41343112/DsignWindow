@@ -19,5 +19,6 @@ private slots:
 
 private:
     QString currentFilePath;
+    bool saveToFile(const QString& filePath);
 };
 #endif // MAINWINDOW_H

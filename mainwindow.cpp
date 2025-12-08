@@ -65,17 +65,7 @@ void MainWindow::on_actionSave_triggered()
     }
 
     // Save to the current file
-    QFile file(currentFilePath);
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        QMessageBox::warning(this, "儲存錯誤", "無法寫入檔案：" + currentFilePath);
-        return;
-    }
-
-    QTextStream out(&file);
-    out << textEdit->toPlainText();
-    file.close();
-
-    statusbar->showMessage("檔案已儲存：" + currentFilePath, 3000);
+    saveToFile(currentFilePath);
 }
 
 void MainWindow::on_actionASave_triggered()
@@ -93,19 +83,23 @@ void MainWindow::on_actionASave_triggered()
         return;
     }
 
-    // Update current file path
+    // Update current file path and save
     currentFilePath = filePath;
+    saveToFile(currentFilePath);
+}
 
-    // Save the file
-    QFile file(currentFilePath);
+bool MainWindow::saveToFile(const QString& filePath)
+{
+    QFile file(filePath);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        QMessageBox::warning(this, "儲存錯誤", "無法寫入檔案：" + currentFilePath);
-        return;
+        QMessageBox::warning(this, "儲存錯誤", "無法寫入檔案：" + filePath);
+        return false;
     }
 
     QTextStream out(&file);
     out << textEdit->toPlainText();
     file.close();
 
-    statusbar->showMessage("檔案已儲存：" + currentFilePath, 3000);
+    statusbar->showMessage("檔案已儲存：" + filePath, 3000);
+    return true;
 }
