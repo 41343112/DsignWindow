@@ -1,6 +1,7 @@
 <RCC>
   <qresource prefix="images">
     <file>asave.png</file>
+    <file>undo.png</file>
     <file>copy.png</file>
     <file>cut.png</file>
     <file>editor.png</file>
@@ -9,6 +10,5 @@
     <file>open.png</file>
     <file>paste.png</file>
     <file>save.png</file>
-    <file>undo.png</file>
   </qresource>
 </RCC>
