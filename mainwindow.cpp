@@ -60,9 +60,10 @@ void MainWindow::on_actionDarkMode_toggled(bool checked)
 void MainWindow::on_actionASave_triggered()
 {
     // Open file dialog to select save location
+    QString defaultPath = currentFilePath.isEmpty() ? QDir::homePath() : QFileInfo(currentFilePath).absolutePath();
     QString fileName = QFileDialog::getSaveFileName(this,
                                                     tr("另存新檔"),
-                                                    currentFilePath.isEmpty() ? QDir::homePath() : currentFilePath,
+                                                    defaultPath,
                                                     tr("文字檔 (*.txt);;所有檔案 (*)"));
     
     // If user cancelled the dialog, return
