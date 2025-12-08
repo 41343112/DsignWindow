@@ -1,5 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QFileDialog>
+#include <QFile>
+#include <QTextStream>
+#include <QMessageBox>
+#include <QDir>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -49,4 +54,58 @@ void MainWindow::on_actionDarkMode_toggled(bool checked)
         // Reset to default light theme
         qApp->setStyleSheet("");
     }
+}
+
+void MainWindow::on_actionSave_triggered()
+{
+    // If no file path is set, call Save As
+    if (currentFilePath.isEmpty()) {
+        on_actionASave_triggered();
+        return;
+    }
+
+    // Save to the current file
+    QFile file(currentFilePath);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QMessageBox::warning(this, "儲存錯誤", "無法寫入檔案：" + currentFilePath);
+        return;
+    }
+
+    QTextStream out(&file);
+    out << textEdit->toPlainText();
+    file.close();
+
+    statusbar->showMessage("檔案已儲存：" + currentFilePath, 3000);
+}
+
+void MainWindow::on_actionASave_triggered()
+{
+    // Open Save As dialog
+    QString filePath = QFileDialog::getSaveFileName(
+        this,
+        "另存新檔",
+        currentFilePath.isEmpty() ? QDir::homePath() : currentFilePath,
+        "文字檔案 (*.txt);;所有檔案 (*.*)"
+    );
+
+    // If user cancelled, return
+    if (filePath.isEmpty()) {
+        return;
+    }
+
+    // Update current file path
+    currentFilePath = filePath;
+
+    // Save the file
+    QFile file(currentFilePath);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QMessageBox::warning(this, "儲存錯誤", "無法寫入檔案：" + currentFilePath);
+        return;
+    }
+
+    QTextStream out(&file);
+    out << textEdit->toPlainText();
+    file.close();
+
+    statusbar->showMessage("檔案已儲存：" + currentFilePath, 3000);
 }
