@@ -1,5 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QFileDialog>
+#include <QFile>
+#include <QTextStream>
+#include <QMessageBox>
+#include <QDir>
+#include <QFileInfo>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -49,4 +55,29 @@ void MainWindow::on_actionDarkMode_toggled(bool checked)
         // Reset to default light theme
         qApp->setStyleSheet("");
     }
+}
+
+void MainWindow::on_actionASave_triggered()
+{
+
+    QString defaultPath = currentFilePath.isEmpty() ? QDir::homePath() : QFileInfo(currentFilePath).absolutePath();
+    QString fileName = QFileDialog::getSaveFileName(this,
+                                                    tr("另存新檔"),
+                                                    defaultPath,
+                                                    tr("文字檔 (*.txt);;所有檔案 (*)"));
+    
+    QFile file(fileName);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QMessageBox::warning(this, tr("另存新檔"),
+                           tr("無法儲存檔案:\n%1").arg(file.errorString()));
+        return;
+    }    QTextStream out(&file);
+    out << textEdit->toPlainText();
+    file.close();
+    
+    currentFilePath = fileName;
+    
+    setWindowTitle(QFileInfo(fileName).fileName() + " - MainWindow");
+    
+
 }
